@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useWeb3React } from '@web3-react/core';
 import { injected } from '../utils/web3';
-import { useNavigate, Link } from 'react-router-dom';
-import Disclaimer from '../components/Disclaimer';
+import { useNavigate } from 'react-router-dom'; // Убрал неиспользуемый Link
 
 const Welcome: React.FC = () => {
   const { account, activate, active } = useWeb3React();
@@ -45,7 +44,6 @@ const Welcome: React.FC = () => {
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold mb-4">Secure Token Creator 🛡️</h1>
           
-          {/* Привлекательный ценовой баннер */}
           <div className="inline-block bg-amber-50 rounded-full px-6 py-3 shadow-lg mb-6">
             <p className="text-2xl font-bold text-amber-800">
               Just 0.35 BNB! 🚀
@@ -53,19 +51,18 @@ const Welcome: React.FC = () => {
           </div>
           
           <p className="text-xl text-gray-700 mb-8">
-            Create your own secure token with advanced anti-bot and anti-dump protection
+            Create your own secure token with advanced anti-bot and anti-dump protection (Currently supports MetaMask wallet only)
           </p>
 
-          <Link 
-            to="/create-token"
+          <button 
+            onClick={connectWallet}
             className="bg-amber-500 text-white px-8 py-4 rounded-lg text-xl font-bold hover:bg-amber-600 transition-colors inline-flex items-center gap-2"
           >
             Create Token Now
             <span className="text-sm">Only 0.35 BNB</span>
-          </Link>
+          </button>
         </div>
 
-        {/* Features section */}
         <div className="grid md:grid-cols-3 gap-8 mt-16">
           <div className="bg-white p-6 rounded-lg shadow-lg">
             <h3 className="text-xl font-bold mb-4">🛡️ Advanced Security</h3>
